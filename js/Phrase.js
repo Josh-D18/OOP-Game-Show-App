@@ -14,15 +14,16 @@ class Phrase {
         console.log(ul);
         for (let i = 0; i < phrases.length; i++){
             let letters = phrases.nodeValue[i];
-            console.log(phrases.length)
             if (letters === ''){
                 li.classList.add('space');
+                li.insertAdjacentHTML('afterbegin', letters);
+                ul.appendChild(li); 
             } else {
                 li.classList.add('hide');
                 li.classList.add('letter');
-            }
-            li.insertAdjacentHTML('afterbegin', letters);
-            ul.appendChild(li);    
+                li.insertAdjacentHTML('afterbegin', letters);
+                ul.appendChild(li); 
+            }   
         }
     }
 
