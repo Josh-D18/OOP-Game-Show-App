@@ -29,4 +29,4 @@ startButton.addEventListener('click', () => {
     
 
 console.log(phrase.phrase);
-console.log(phrase.addPhraseToDisplay());
+phrase.addPhraseToDisplay();
