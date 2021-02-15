@@ -20,9 +20,13 @@ class Game {
     * @return {array} An array of phrases that could be used in the game
     */
     createPhrases(){
-        return ['The bewildered tourist was lost', 'The lost puppy was a wet and stinky dog', 'It was a story as old as time', 'Saturday became a cool, wet afternoon']
+        return ['The bewildered tourist was lost', 'The lost puppy was a wet and stinky dog', 'It was a story as old as time', 'Saturday became a cool, wet afternoon', 'He was waiting for the rain to stop']
     }
-
+    
+    getRandomPhrase(){
+        let ranNum = Math.floor(Math.random() * 5);
+        return this.createPhrases()[ranNum]
+    }
 
     handleInteraction(){
 

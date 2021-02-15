@@ -7,15 +7,27 @@ class Phrase {
         this.phrase = phrase;
     }
 
-    addPhraseToDisplay(li){
-        li.classList.add('hide');
-        li.classList.add('letter');
+    addPhraseToDisplay(){
+        let ul = document.querySelector('#phrase ul');
+        let li = document.createElement('li');
+        let phrases = document.createTextNode(this.phrase);
+
+        for (let i = 0; i < phrases.length; i++){
+            let letters = phrases.nodeValue[i];
+
+            if (letters === ''){
+                li.classList.add('space');
+            } else {
+                li.classList.add('hide');
+                li.classList.add('letter');
+            }
+            li.appendChild(letters);
+            ul.insertAdjacentHTML('afterbegin', li);
+        }
     }
 
-    checkLetter(letter){
-        if(letter === true){
-
-        } 
+    checkLetter(){
+        
     }
 
     showMatchedLetter(){
