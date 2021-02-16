@@ -15,7 +15,7 @@ class Game {
     startGame(){
         let screenOverlay = document.querySelector(".start");
         screenOverlay.style.display = 'none';
-        this.activePhrase = this.getRandomPhrase();
+        return this.activePhrase = this.getRandomPhrase();
     }
 
 
@@ -29,7 +29,7 @@ class Game {
     
     getRandomPhrase(){
         let ranNum = Math.floor(Math.random() * 5);
-        return this.createPhrases()[ranNum]
+        return this.createPhrases()[ranNum];
     }
 
     handleInteraction(){

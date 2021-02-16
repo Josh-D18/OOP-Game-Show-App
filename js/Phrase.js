@@ -29,8 +29,18 @@ class Phrase {
         }
     }
 
-    checkLetter(){
-        
+    /** 
+    * Checks if passed letter is in phrase 
+    * @param (string) letter - Letter to check 
+    */ 
+
+    checkLetter(letter){
+        let activePhrase = game.activePhrase;
+        for (let i = 0; i < activePhrase.length; i++){
+            if (letter === activePhrase[i]){
+                return true;
+            }
+        }
     }
 
     showMatchedLetter(){

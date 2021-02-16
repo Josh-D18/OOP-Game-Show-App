@@ -12,7 +12,7 @@ startButton.addEventListener('click', () => {
     game.startGame();
     game.getRandomPhrase();
     phrase.addPhraseToDisplay();
-    // console.log(`Active Phrase - phrase: ${game.activePhrase}`);
+    console.log(game.activePhrase);
 });
 
 // game.phrases.forEach((phrase, index) => {
@@ -27,7 +27,7 @@ startButton.addEventListener('click', () => {
 //     logPhrase(game.getRandomPhrase()); 
 //     logPhrase(game.getRandomPhrase()); 
 //     logPhrase(game.getRandomPhrase());
-    
+
 
 // console.log(phrase.phrase);
-
+// console.log(game.activePhrase.checkLetter('a'))
