@@ -10,8 +10,9 @@ let startButton = document.querySelector('#btn__reset');
 //Start Game Event
 startButton.addEventListener('click', () => {
     game.startGame();
-    // game.getRandomPhrase();
-    
+    game.getRandomPhrase();
+    phrase.addPhraseToDisplay();
+    // console.log(`Active Phrase - phrase: ${game.activePhrase}`);
 });
 
 // game.phrases.forEach((phrase, index) => {
@@ -28,5 +29,5 @@ startButton.addEventListener('click', () => {
 //     logPhrase(game.getRandomPhrase());
     
 
-console.log(phrase.phrase);
-phrase.addPhraseToDisplay();
+// console.log(phrase.phrase);
+

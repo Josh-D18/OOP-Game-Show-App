@@ -9,9 +9,13 @@ class Game {
         this.activePhrase = null;
     }
 
+        /** 
+    * Begins game by selecting a random phrase and displaying it to user */ 
+
     startGame(){
         let screenOverlay = document.querySelector(".start");
         screenOverlay.style.display = 'none';
+        this.activePhrase = this.getRandomPhrase();
     }
 
 
