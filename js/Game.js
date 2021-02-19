@@ -24,12 +24,31 @@ class Game {
     * @return {array} An array of phrases that could be used in the game
     */
     createPhrases(){
-        return ['The bewildered tourist was lost', 'The lost puppy was a wet and stinky dog', 'It was a story as old as time', 'Saturday became a cool, wet afternoon', 'He was waiting for the rain to stop']
+        let phrases =  {
+            phrase: {
+                'phrase': 'The bewildered tourist was lost'
+            },
+            phrase: {
+                'phrase': 'The lost puppy was a wet and stinky dog'
+            },
+            phrase: {
+                'phrase': 'It was a story as old as time'
+            },
+            phrase: {
+                'phrase': 'Saturday became a cool, wet afternoon'
+            },
+            phrase: {
+                'phrase':  'He was waiting for the rain to stop'
+            }
+        };
+        console.log(phrases)
+        return phrases;
     }
     
     getRandomPhrase(){
         let ranNum = Math.floor(Math.random() * 5);
-        return this.createPhrases()[ranNum];
+        console.log(this.createPhrases())
+        return this.createPhrases()['phrase'][ranNum];
     }
 
     handleInteraction(){

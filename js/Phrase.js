@@ -41,6 +41,10 @@ class Phrase {
                 return true;
             }
         }
+        
+        // if (game.activePhrase.includes(letter)){
+        //     return true;
+        // }
     }
 
     showMatchedLetter(){
