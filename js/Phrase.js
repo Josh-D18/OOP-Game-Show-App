@@ -35,20 +35,18 @@ class Phrase {
     */ 
 
     checkLetter(letter){
-        let activePhrase = game.activePhrase;
-        for (let i = 0; i < activePhrase.length; i++){
-            if (letter === activePhrase[i]){
-                return true;
-            }
-        }
-        
-        // if (game.activePhrase.includes(letter)){
-        //     return true;
-        // }
+        let activePhrase = this.phrase.toLowerCase();
+        return activePhrase.includes(letter);
     }
 
-    showMatchedLetter(){
-
+    /**
+    * Displays passed letter on screen after a match is found
+    * @param (string) letter - Letter to display
+    */
+    showMatchedLetter(letter){
+        if (this.checkLetter === true){
+            li.classList.remove('hide');
+        }
     }
 
 }
