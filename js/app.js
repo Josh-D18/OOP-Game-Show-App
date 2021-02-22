@@ -12,8 +12,8 @@ startButton.addEventListener('click', () => {
     game.startGame();
     game.getRandomPhrase();
     phrase.addPhraseToDisplay();
-    console.log(game.activePhrase.checkLetter('q'));
-    console.log(randomPhrase)
+    console.log(game.activePhrase.checkLetter('a'));
+    console.log(game.activePhrase.showMatchedLetter('a'));
 });
 
 // game.phrases.forEach((phrase, index) => {

@@ -38,8 +38,35 @@ class Game {
         return new Phrase(this.createPhrases()[0][ranNum]);
     }
 
-    handleInteraction(){
+    /**
+    * Checks for winning move
+    * @return {boolean} True if game has been won, false if game wasn't
+    won
+    */
+    //    The contains() method checks whether a string contains a sequence of characters.
+    // Returns true if the characters exist and false if not.
+    checkForWin(){
+        let letters = document.querySelectorAll('.letter');
+        // if (letters.classList.indexOf('show')){
+        //     return true;
+        // }
+        // if (letters.classList.contains('show')){
+        //     return true;
+        // }
+    }
+
+
+
+    removeLife(){
 
     }
 
+
+    gameOver(){
+
+    }
+
+    handleInteraction(){
+
+    }
 }

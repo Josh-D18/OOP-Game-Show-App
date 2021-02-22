@@ -10,8 +10,7 @@ class Phrase {
 
     addPhraseToDisplay(){
         const ul = document.querySelector('#phrase ul');
-        const phrases = document.createTextNode(this.phrase);
-
+        const phrases = document.createTextNode(this.phrase.phrase);
         for (let i = 0; i < phrases.length; i++){
             const li = document.createElement('li');
             const listOfWords = [phrases];
@@ -44,8 +43,13 @@ class Phrase {
     * @param (string) letter - Letter to display
     */
     showMatchedLetter(letter){
-        if (this.checkLetter === true){
-            li.classList.remove('hide');
+        let wordChosen = document.querySelectorAll('.letter');
+        for (let i = 0; i < wordChosen.length; i++){
+                if (letter === wordChosen[i].innerHTML){
+                    wordChosen[i].classList.remove('hide');
+                    wordChosen[i].classList.add('show');
+                }
+            
         }
     }
 
