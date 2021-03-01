@@ -14,6 +14,8 @@ startButton.addEventListener('click', () => {
     phrase.addPhraseToDisplay();
     console.log(game.activePhrase.checkLetter('a'));
     console.log(game.activePhrase.showMatchedLetter('a'));
+    console.log(game.checkForWin());
+    console.log(game.removeLife())
 });
 
 // game.phrases.forEach((phrase, index) => {

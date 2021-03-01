@@ -47,21 +47,45 @@ class Game {
     // Returns true if the characters exist and false if not.
     checkForWin(){
         let letters = document.querySelectorAll('.letter');
-        // if (letters.classList.indexOf('show')){
-        //     return true;
-        // }
-        // if (letters.classList.contains('show')){
-        //     return true;
-        // }
+
+        // .contains => https://www.javascripttutorial.net/dom/css/check-if-an-element-contains-a-class/
+        // letters returned an object so I used a for in loop
+        for (const key in letters) {
+            if(letters[key].classList.contains('show')){
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
-
+    /**
+    * Increases the value of the missed property
+    * Removes a life from the scoreboard
+    * Checks if player has remaining lives and ends game if player is out
+    */
 
     removeLife(){
+        let hearts = document.querySelectorAll('.tries img');
+        console.log(hearts)
+        for (const key in hearts){
+            if(hearts[key]){
+                hearts[0].src = `images/lostHeart.png`;
+                this.missed += 1;
+            } else {
+                return false;
+            }
 
+            if(this.missed === 5){
+                this.gameOver();
+            }
+        }
     }
 
-
+    /**
+    * Displays game over message
+    * @param {boolean} gameWon - Whether or not the user won the game
+    */
     gameOver(){
 
     }
