@@ -66,16 +66,22 @@ class Game {
     */
 
     removeLife(){
-        let hearts = document.querySelectorAll('.tries img');
-        console.log(hearts)
-        for (const key in hearts){
-            if(hearts[key]){
-                hearts[0].src = `images/lostHeart.png`;
-                this.missed += 1;
-            } else {
-                return false;
+        const hearts = document.querySelectorAll('.tries img');
+        const lostLife = `images/lostHeart.png`;
+        let called = false;
+        
+        if(!called){
+            let timesCalled = 0;
+            for (let i = 0; i < hearts.length; i++){
+                hearts[i].src = lostLife; 
+                called = true;
             }
 
+            if(called){
+                timesCalled++;
+                this.missed++;
+            }
+            // console.log(timesCalled, called, this.missed)
             if(this.missed === 5){
                 this.gameOver();
             }
