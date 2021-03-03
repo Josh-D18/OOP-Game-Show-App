@@ -68,21 +68,16 @@ class Game {
     removeLife(){
         const hearts = document.querySelectorAll('.tries img');
         const lostLife = `images/lostHeart.png`;
-        let called = false;
-        
-        if(!called){
-            let timesCalled = 0;
-            for (let i = 0; i < hearts.length; i++){
-                hearts[i].src = lostLife; 
-                called = true;
-            }
+        let missed = this.missed;
 
-            if(called){
-                timesCalled++;
-                this.missed++;
-            }
-            // console.log(timesCalled, called, this.missed)
-            if(this.missed === 5){
+        for (let i = 0; i < hearts.length; i++){
+            let heart = hearts[i].attributes[0].value;
+            if(heart === "images/liveHeart.png"){
+                hearts[i].src = lostLife;
+                break
+            };
+            missed++;
+            if(missed === 4){
                 this.gameOver();
             }
         }
@@ -93,7 +88,8 @@ class Game {
     * @param {boolean} gameWon - Whether or not the user won the game
     */
     gameOver(){
-
+        let gameOverMsg = document.querySelector('#game-over-message');
+        console.log(gameOverMsg);
     }
 
     handleInteraction(){
