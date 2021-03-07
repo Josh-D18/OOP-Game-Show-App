@@ -87,12 +87,34 @@ class Game {
     * Displays game over message
     * @param {boolean} gameWon - Whether or not the user won the game
     */
-    gameOver(){
+    gameOver(gameWon){
         let gameOverMsg = document.querySelector('#game-over-message');
-        console.log(gameOverMsg);
+        let overlay = document.querySelector('.start');
+        if (!gameWon){
+            overlay.classList.add('lose');
+            overlay.classList.remove('start');
+            overlay.style.display = 'block';
+            gameOverMsg.textContent = 'You Lose!';
+        } 
+
+        if (gameWon){
+            overlay.classList.add('win');
+            overlay.classList.remove('start');
+            overlay.style.display = 'block';
+            gameOverMsg.textContent = 'You Win!';
+        }
     }
 
-    handleInteraction(){
+    /**
+    * Handles onscreen keyboard button clicks
+    * @param (HTMLButtonElement) button - The clicked button element
+    */
 
+    handleInteraction(button){
+        button.disabled = true;
+        // if (!this.activePhrase.showMatchedLetter(button.innerHTML)){
+
+        // }
+        console.log(button, game.activePhrase.showMatchedLetter(button.innerHTML),button.innerHTML)
     }
 }
