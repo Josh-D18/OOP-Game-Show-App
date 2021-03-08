@@ -11,12 +11,9 @@ const keyboardButtons = document.querySelectorAll('.key');
 //Start Game Event
 startButton.addEventListener('click', () => {
     game.startGame();
-    game.getRandomPhrase();
-    phrase.addPhraseToDisplay();
-    // console.log(game.activePhrase.checkLetter('a'));
-    // console.log(game.activePhrase.showMatchedLetter('a'));
-    // console.log(game.checkForWin());
-    // // console.log(game.removeLife())
+    game.getRandomPhrase().addPhraseToDisplay();
+    // console.log(game.activePhrase, phrase)
+    console.log(game.getRandomPhrase()['phrase'])
 });
 
 //Keyboard Button Event Listner 
@@ -50,3 +47,8 @@ keyboardButtons.forEach(button => {
 
 // console.log(phrase.phrase);
 // console.log(game.activePhrase.checkLetter('a'))
+
+// console.log(game.activePhrase.checkLetter('a'));
+    // console.log(game.activePhrase.showMatchedLetter('a'));
+    // console.log(game.checkForWin());
+    // // console.log(game.removeLife())

@@ -26,7 +26,7 @@ class Game {
     createPhrases(){
         let phrases = [
             {
-                phrase:  ['The bewildered tourist was lost','The lost puppy was a wet and stinky dog','It was a story as old as time', 'Saturday became a cool, wet afternoon',  'He was waiting for the rain to stop']
+                phrase:  ['the bewildered tourist was lost','the lost puppy was a wet and stinky dog','it was a story as old as time', 'saturday became a cool wet afternoon',  'he was waiting for the rain to stop']
             }
         ]
         return phrases.map(phrase => {return phrase['phrase']})
@@ -112,9 +112,21 @@ class Game {
 
     handleInteraction(button){
         button.disabled = true;
-        // if (!this.activePhrase.showMatchedLetter(button.innerHTML)){
-
+    
+        console.log( this.activePhrase, this.checkForWin(), phrase)
+            
+        // if (!this.activePhrase.checkLetter(button.textContent)){
+        //     button.classList.add('wrong');
+        //     this.removeLife();
         // }
-        console.log(button, game.activePhrase.showMatchedLetter(button.innerHTML),button.innerHTML)
+        
+        // if (this.activePhrase.checkLetter(button.textContent)){
+        //     button.classList.add('chosen');
+        //     phrase.showMatchedLetter(button.innerHTML);
+        //     this.checkForWin()
+        //     if(this.checkForWin()){
+        //         this.gameOver();
+        //     }
+        // }
     }
 }

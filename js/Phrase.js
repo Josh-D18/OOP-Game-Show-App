@@ -10,7 +10,8 @@ class Phrase {
 
     addPhraseToDisplay(){
         const ul = document.querySelector('#phrase ul');
-        const phrases = document.createTextNode(this.phrase.phrase);
+        console.log(this.phrase)
+        const phrases = document.createTextNode(this.phrase);
         for (let i = 0; i < phrases.length; i++){
             const li = document.createElement('li');
             const listOfWords = [phrases];
@@ -34,7 +35,7 @@ class Phrase {
     */ 
 
     checkLetter(letter){
-        let activePhrase = this.phrase.toLowerCase();
+        const activePhrase = this.phrase;
         return activePhrase.includes(letter);
     }
 
