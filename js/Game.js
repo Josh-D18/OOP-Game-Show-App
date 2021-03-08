@@ -90,6 +90,7 @@ class Game {
     gameOver(gameWon){
         let gameOverMsg = document.querySelector('#game-over-message');
         let overlay = document.querySelector('.start');
+        
         if (!gameWon){
             overlay.classList.add('lose');
             overlay.classList.remove('start');
@@ -113,20 +114,20 @@ class Game {
     handleInteraction(button){
         button.disabled = true;
     
-        console.log( this.activePhrase, this.checkForWin(), phrase)
+        // console.log( this.activePhrase, this.checkForWin(), phrase)
             
-        // if (!this.activePhrase.checkLetter(button.textContent)){
-        //     button.classList.add('wrong');
-        //     this.removeLife();
-        // }
+        if (!this.activePhrase.checkLetter(button.textContent)){
+            button.classList.add('wrong');
+            this.removeLife();
+        }
         
-        // if (this.activePhrase.checkLetter(button.textContent)){
-        //     button.classList.add('chosen');
-        //     phrase.showMatchedLetter(button.innerHTML);
-        //     this.checkForWin()
-        //     if(this.checkForWin()){
-        //         this.gameOver();
-        //     }
-        // }
+        if (this.activePhrase.checkLetter(button.textContent)){
+            button.classList.add('chosen');
+            this.activePhrase.showMatchedLetter(button.innerHTML);
+            this.checkForWin()
+            if(this.checkForWin()){
+                this.gameOver(true);
+            } 
+        }
     }
 }

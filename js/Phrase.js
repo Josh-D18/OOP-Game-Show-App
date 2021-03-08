@@ -10,8 +10,7 @@ class Phrase {
 
     addPhraseToDisplay(){
         const ul = document.querySelector('#phrase ul');
-        console.log(this.phrase)
-        const phrases = document.createTextNode(this.phrase);
+        const phrases = document.createTextNode(game.activePhrase['phrase']);
         for (let i = 0; i < phrases.length; i++){
             const li = document.createElement('li');
             const listOfWords = [phrases];

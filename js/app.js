@@ -3,17 +3,16 @@
  * app.js */
 
 const game = new Game();
-const randomPhrase = game.getRandomPhrase(); 
-const phrase = new Phrase(randomPhrase);
+// const randomPhrase = game.getRandomPhrase(); 
+// const phrase = new Phrase(randomPhrase);
 let startButton = document.querySelector('#btn__reset');
 const keyboardButtons = document.querySelectorAll('.key');
 
 //Start Game Event
 startButton.addEventListener('click', () => {
     game.startGame();
-    game.getRandomPhrase().addPhraseToDisplay();
+    game.activePhrase.addPhraseToDisplay();
     // console.log(game.activePhrase, phrase)
-    console.log(game.getRandomPhrase()['phrase'])
 });
 
 //Keyboard Button Event Listner 
