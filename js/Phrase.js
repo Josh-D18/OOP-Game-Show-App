@@ -49,7 +49,6 @@ class Phrase {
                     wordChosen[i].classList.remove('hide');
                     wordChosen[i].classList.add('show');
                 }
-            
         }
     }
 

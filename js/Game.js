@@ -46,17 +46,25 @@ class Game {
     //    The contains() method checks whether a string contains a sequence of characters.
     // Returns true if the characters exist and false if not.
     checkForWin(){
-        let letters = document.querySelectorAll('.letter');
+        let letters = document.querySelectorAll('#phrase ul li');
 
-        // .contains => https://www.javascripttutorial.net/dom/css/check-if-an-element-contains-a-class/
-        // letters returned an object so I used a for in loop
-        for (const key in letters) {
-            if(letters[key].classList.contains('show')){
-                return true;
-            } else {
-                return false;
+        // counter to check times a letter is found
+        let lettersFound = 0;
+        // variable to check the amount of spaces in the phrase
+        let spaceInPhrase = 0;
+
+        letters.forEach(letter => {
+            if (letter.className === 'letter show'){
+                lettersFound++;
+            } 
+            if  (letter.className === 'hide space'){
+                spaceInPhrase++;
+            } 
+
+            if (lettersFound === letters.length - spaceInPhrase){
+                return this.gameOver(true);
             }
-        }
+        });
     }
 
     /**
@@ -78,7 +86,7 @@ class Game {
             };
             missed++;
             if(missed === 4){
-                this.gameOver();
+                this.gameOver(false);
             }
         }
     }
@@ -113,21 +121,25 @@ class Game {
 
     handleInteraction(button){
         button.disabled = true;
-    
-        // console.log( this.activePhrase, this.checkForWin(), phrase)
             
         if (!this.activePhrase.checkLetter(button.textContent)){
             button.classList.add('wrong');
             this.removeLife();
         }
+        const wordChosen = document.querySelectorAll('.letter');
+        const screenOverlay = document.querySelector(".start");
         
         if (this.activePhrase.checkLetter(button.textContent)){
             button.classList.add('chosen');
             this.activePhrase.showMatchedLetter(button.innerHTML);
-            this.checkForWin()
-            if(this.checkForWin()){
-                this.gameOver(true);
-            } 
+            this.checkForWin();
         }
+
+        // if (!this.gameOver()){
+        //     startButton.addEventListener('click', () => {
+        //     screenOverlay.style.display = 'none';
+        //         console.log(wordChosen)
+        //     });
+        // }
     }
 }

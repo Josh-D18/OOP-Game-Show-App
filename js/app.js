@@ -2,26 +2,23 @@
  * Project 4 - OOP Game App
  * app.js */
 
+
 const game = new Game();
-// const randomPhrase = game.getRandomPhrase(); 
-// const phrase = new Phrase(randomPhrase);
-let startButton = document.querySelector('#btn__reset');
+const startButton = document.querySelector('#btn__reset');
 const keyboardButtons = document.querySelectorAll('.key');
 
 //Start Game Event
 startButton.addEventListener('click', () => {
     game.startGame();
     game.activePhrase.addPhraseToDisplay();
-    // console.log(game.activePhrase, phrase)
 });
 
-//Keyboard Button Event Listner 
 
+//Keyboard Button Event
 keyboardButtons.forEach(button => {
     button.addEventListener('click', () => {
         game.handleInteraction(button);
     });
-
 });
 
 
@@ -51,3 +48,5 @@ keyboardButtons.forEach(button => {
     // console.log(game.activePhrase.showMatchedLetter('a'));
     // console.log(game.checkForWin());
     // // console.log(game.removeLife())
+    // const randomPhrase = game.getRandomPhrase(); 
+// const phrase = new Phrase(randomPhrase);
