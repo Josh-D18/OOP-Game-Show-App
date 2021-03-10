@@ -7,7 +7,7 @@ class Phrase {
         this.phrase = phrase;
     }
 
-
+    // Add phrase to display function. The fucntion will take the phrase and put each letter into a li
     addPhraseToDisplay(){
         const ul = document.querySelector('#phrase ul');
         const phrases = document.createTextNode(game.activePhrase['phrase']);

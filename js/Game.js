@@ -13,10 +13,10 @@ class Game {
     * Begins game by selecting a random phrase and displaying it to user */ 
 
     startGame(){
-        let screenOverlay = document.querySelector(".start");
+        let screenOverlay = document.querySelector("#overlay");
         screenOverlay.style.display = 'none';
         return this.activePhrase = this.getRandomPhrase();
-    }
+        }
 
 
     /**
@@ -43,8 +43,7 @@ class Game {
     * @return {boolean} True if game has been won, false if game wasn't
     won
     */
-    //    The contains() method checks whether a string contains a sequence of characters.
-    // Returns true if the characters exist and false if not.
+
     checkForWin(){
         let letters = document.querySelectorAll('#phrase ul li');
 
@@ -97,18 +96,17 @@ class Game {
     */
     gameOver(gameWon){
         let gameOverMsg = document.querySelector('#game-over-message');
-        let overlay = document.querySelector('.start');
-        
+        let overlay = document.querySelector('#overlay');
+        overlay.classList.remove('start'); //
+
         if (!gameWon){
             overlay.classList.add('lose');
-            overlay.classList.remove('start');
             overlay.style.display = 'block';
             gameOverMsg.textContent = 'You Lose!';
         } 
 
         if (gameWon){
             overlay.classList.add('win');
-            overlay.classList.remove('start');
             overlay.style.display = 'block';
             gameOverMsg.textContent = 'You Win!';
         }
@@ -120,26 +118,52 @@ class Game {
     */
 
     handleInteraction(button){
+        const buttons = document.querySelectorAll('.keyrow button');
+        const wordChosen = document.querySelectorAll('.letter');
+        const screenOverlay = document.querySelector(".start");
+        const hearts = document.querySelectorAll('.tries img');
+        const fullHealth = 'images/liveHeart.png';
+        
+        // Disable the button that is clicked
         button.disabled = true;
-            
+
+
+        // Check if the letter is in the phrase
+        // If it is add class 'chosen' and add the letter to display
+        // If not remove a life and add class 'wrong'
         if (!this.activePhrase.checkLetter(button.textContent)){
             button.classList.add('wrong');
             this.removeLife();
         }
-        const wordChosen = document.querySelectorAll('.letter');
-        const screenOverlay = document.querySelector(".start");
-        
+
         if (this.activePhrase.checkLetter(button.textContent)){
             button.classList.add('chosen');
             this.activePhrase.showMatchedLetter(button.innerHTML);
             this.checkForWin();
         }
 
-        // if (!this.gameOver()){
-        //     startButton.addEventListener('click', () => {
-        //     screenOverlay.style.display = 'none';
-        //         console.log(wordChosen)
-        //     });
-        // }
+        // Li letters
+        const ul = document.querySelectorAll('#phrase ul');
+        const li = document.querySelectorAll('#phrase ul li');
+
+        // StartButton Event for gameOver screen
+        startButton.addEventListener('click', () => {
+            for (let i = 0; i < li.length; i++){
+                console.log(li[i].parentNodes);
+                ul[0].removeChild(li[i])
+            }
+
+            buttons.forEach(button => {
+                button.disabled = false;
+                button.classList.remove('chosen');
+                button.classList.remove('wrong');
+                button.classList.remove('show');
+                button.classList.add('key');
+            });
+            
+            for (let i = 0; i < hearts.length; i++){
+                    hearts[i].src = fullHealth;
+                };
+        });
     }
 }
