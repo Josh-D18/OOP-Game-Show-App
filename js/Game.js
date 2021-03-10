@@ -7,6 +7,7 @@ class Game {
         this.missed = missed;
         this.phrases = this.createPhrases();
         this.activePhrase = null;
+        this.isGameOver = false;
     }
 
         /** 
@@ -95,21 +96,59 @@ class Game {
     * @param {boolean} gameWon - Whether or not the user won the game
     */
     gameOver(gameWon){
+        // Variables to change overlay and text
         let gameOverMsg = document.querySelector('#game-over-message');
         let overlay = document.querySelector('#overlay');
-        overlay.classList.remove('start'); 
+        overlay.classList.remove('start');
+
+
+        // Variables for resetting the game
+        const buttons = document.querySelectorAll('.keyrow button');
+        const hearts = document.querySelectorAll('.tries img');
+        const fullHealth = 'images/liveHeart.png';
+        const li = document.querySelectorAll('#phrase ul li');
+        
+        //Check to see if game is over 
+        this.isGameOver = true;
 
         if (!gameWon){
+            this.isGameOver = true;
             overlay.classList.add('lose');
+            overlay.classList.remove('win');
             overlay.style.display = 'block';
             gameOverMsg.textContent = 'You Lose!';
         } 
 
         if (gameWon){
+            this.isGameOver = true;
             overlay.classList.add('win');
+            overlay.classList.remove('lose');
             overlay.style.display = 'block';
             gameOverMsg.textContent = 'You Win!';
         }
+
+
+         // for gameOver screen
+        if (game.isGameOver){
+            for (let i = 0; i < li.length; i++){
+                li[i].parentNode.removeChild(li[i]);
+            }
+    
+        // Changing back the button classes to the default value
+        buttons.forEach(button => {
+            button.disabled = false;
+            button.classList.remove('chosen');
+            button.classList.remove('wrong');
+            button.classList.remove('show');
+            button.classList.add('key');
+        });
+            
+        // Change the empty hearts back to full
+        for (let i = 0; i < hearts.length; i++){
+            hearts[i].src = fullHealth;
+        };
+        
+    }
     }
 
     /**
@@ -118,13 +157,8 @@ class Game {
     */
 
     handleInteraction(button){
-        const buttons = document.querySelectorAll('.keyrow button');
-        const hearts = document.querySelectorAll('.tries img');
-        const fullHealth = 'images/liveHeart.png';
-        
         // Disable the button that is clicked
         button.disabled = true;
-
 
         // Check if the letter is in the phrase
         // If it is add class 'chosen' and add the letter to display
@@ -139,29 +173,5 @@ class Game {
             this.activePhrase.showMatchedLetter(button.innerHTML);
             this.checkForWin();
         }
-
-        // Li letters
-        const li = document.querySelectorAll('#phrase ul li');
-
-        // StartButton Event for gameOver screen
-        startButton.addEventListener('click', () => {
-            for (let i = 0; i < li.length; i++){
-                li[i].parentNode.removeChild(li[i]);
-            }
-
-            // Changing back the button classes to the default value
-            buttons.forEach(button => {
-                button.disabled = false;
-                button.classList.remove('chosen');
-                button.classList.remove('wrong');
-                button.classList.remove('show');
-                button.classList.add('key');
-            });
-            
-            // Change the empty hearts back to full
-            for (let i = 0; i < hearts.length; i++){
-                    hearts[i].src = fullHealth;
-                };
-        });
     }
 }

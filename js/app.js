@@ -3,12 +3,14 @@
  * app.js */
 
 
-const game = new Game();
+let game;
 const startButton = document.querySelector('#btn__reset');
 const keyboardButtons = document.querySelectorAll('.key');
 
 //Start Game Event
 startButton.addEventListener('click', () => {
+    // defining a new game instance
+    game = new Game();
     game.startGame();
     game.activePhrase.addPhraseToDisplay();
 });
