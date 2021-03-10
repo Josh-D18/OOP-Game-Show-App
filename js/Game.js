@@ -128,7 +128,7 @@ class Game {
         }
 
 
-         // for gameOver screen
+         // if the game is over reset the entire game 
         if (game.isGameOver){
             for (let i = 0; i < li.length; i++){
                 li[i].parentNode.removeChild(li[i]);
