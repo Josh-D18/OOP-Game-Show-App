@@ -97,7 +97,7 @@ class Game {
     gameOver(gameWon){
         let gameOverMsg = document.querySelector('#game-over-message');
         let overlay = document.querySelector('#overlay');
-        overlay.classList.remove('start'); //
+        overlay.classList.remove('start'); 
 
         if (!gameWon){
             overlay.classList.add('lose');
@@ -119,8 +119,6 @@ class Game {
 
     handleInteraction(button){
         const buttons = document.querySelectorAll('.keyrow button');
-        const wordChosen = document.querySelectorAll('.letter');
-        const screenOverlay = document.querySelector(".start");
         const hearts = document.querySelectorAll('.tries img');
         const fullHealth = 'images/liveHeart.png';
         
@@ -143,16 +141,15 @@ class Game {
         }
 
         // Li letters
-        const ul = document.querySelectorAll('#phrase ul');
         const li = document.querySelectorAll('#phrase ul li');
 
         // StartButton Event for gameOver screen
         startButton.addEventListener('click', () => {
             for (let i = 0; i < li.length; i++){
-                console.log(li[i].parentNodes);
-                ul[0].removeChild(li[i])
+                li[i].parentNode.removeChild(li[i]);
             }
 
+            // Changing back the button classes to the default value
             buttons.forEach(button => {
                 button.disabled = false;
                 button.classList.remove('chosen');
@@ -161,6 +158,7 @@ class Game {
                 button.classList.add('key');
             });
             
+            // Change the empty hearts back to full
             for (let i = 0; i < hearts.length; i++){
                     hearts[i].src = fullHealth;
                 };
