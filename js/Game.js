@@ -76,19 +76,18 @@ class Game {
     removeLife(){
         const hearts = document.querySelectorAll('.tries img');
         const lostLife = `images/lostHeart.png`;
-        let missed = this.missed;
+        let heart = hearts[this.missed].attributes[0].value;
 
-        for (let i = 0; i < hearts.length; i++){
-            let heart = hearts[i].attributes[0].value;
-            if(heart === "images/liveHeart.png"){
-                hearts[i].src = lostLife;
-                break
-            };
-            missed++;
-            if(missed === 4){
-                this.gameOver(false);
-            }
-        }
+        
+        if(heart === "images/liveHeart.png"){
+            hearts[this.missed].src = lostLife;
+            this.missed++;
+        };
+
+        if(this.missed === 5){
+            this.gameOver(false);
+        };
+        
     }
 
     /**
